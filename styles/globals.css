@@ -25,6 +25,7 @@ input {
     width: 200px;
 }
 
+
 @layer utilities {
     .text-balance {
         text-wrap: balance;
