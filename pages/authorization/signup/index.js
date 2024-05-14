@@ -2,7 +2,7 @@
 
 import {useState} from "react";
 
-export default function SignUp() {
+export default function index() {
     const [formData, setFormData] = useState({
         name: '',
         surname: '',

@@ -8,11 +8,11 @@ export default function CustomComponent() {
                     <h3 className="text-center font-bold">Sign up</h3>
                 </div>
                 <div className="flex flex-col items-center mt-4 space-y-2 text-2xl">
-                    <Link href="/authorization/signup" className="text-emerald-50 hover:text-green-200 transition-colors">
+                    <Link href="/authorization/signup/" className="text-emerald-50 hover:text-green-200 transition-colors">
                         User
                     </Link>
                     <hr className="w-full h-0.5 bg-emerald-50"/>
-                    <Link href="#" className="text-emerald-50 hover:text-green-200 transition-colors">
+                    <Link href="/authorization/signup/admin" className="text-emerald-50 hover:text-green-200 transition-colors">
                         Admin
                     </Link>
                 </div>
