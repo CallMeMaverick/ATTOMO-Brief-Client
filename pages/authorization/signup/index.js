@@ -36,9 +36,7 @@ export default function index() {
 
         if (response.ok) {
             const data = await response.json();
-            console.log(data);
             setSuccessMessage("User created successfully");
-            console.log('User created successfully:', data);
         } else {
             let errorData;
             try {
