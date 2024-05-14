@@ -36,7 +36,7 @@ export default function index() {
             const data = await response.json();
             localStorage.setItem("token", data.token);
             setSuccessMessage("Successfully logged in");
-            router.push(`/authorization/${data.user.id}/accommodations/`)
+            router.push(`/authorization/${data.user.id}/`)
 
         } else {
             let errorMessage;
