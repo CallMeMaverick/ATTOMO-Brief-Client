@@ -1,57 +1,86 @@
-import {useState} from "react";
-import {useRouter} from "next/router";
+"use client"
 
-export default function index() {
+import {useState} from "react";
+
+export default function signupUser() {
     const [formData, setFormData] = useState({
-        email: "",
-        password: ""
+        name: '',
+        surname: '',
+        email: '',
+        password: ''
     })
 
     const [errorMessage, setErrorMessage] = useState('');
     const [successMessage, setSuccessMessage] = useState('');
-    const router = useRouter();
 
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData({
             ...formData,
             [name]: value
-        })
-    }
+        });
+    };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         setErrorMessage('');
         setSuccessMessage('');
 
-        const response = await fetch("http://localhost:3000/login", {
+        const response = await fetch("http://localhost:3000/signup", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify(formData)
-        });
+        })
 
         if (response.ok) {
             const data = await response.json();
-            localStorage.setItem("token", data.token);
-            setSuccessMessage("Successfully logged in");
-            router.push(`/authorization/${data.user.id}/accommodations/`)
-
+            console.log(data);
+            setSuccessMessage("User created successfully");
+            console.log('User created successfully:', data);
         } else {
-            let errorMessage;
+            let errorData;
             try {
-                errorMessage = await response.json();
-            } catch (error) {
-                errorMessage = { message: 'Unknown error occurred' };
+                errorData = await response.json();
+            } catch (e) {
+                errorData = { message: 'Unknown error occurred' };
             }
-            setErrorMessage(errorMessage.message || 'Failed log in.');
+            setErrorMessage(errorData.message || 'Failed to create user.');
+            console.error('Failed to create user:', errorData);
         }
     }
 
     return (
         <div className={"flex flex-col justify-center items-center mt-24"}>
             <form onSubmit={handleSubmit} className={"flex flex-col justify-center w-fit gap-3.5"}>
+                <div className={"div-user"}>
+                    <label className={"text-left"} htmlFor="name">Name</label>
+                    <input
+                        className={"w-64 border-emerald-500"}
+                        type="text"
+                        id={"name"}
+                        name={"name"}
+                        placeholder={"John"}
+                        value={formData.name}
+                        required={true}
+                        onChange={handleChange}
+                    />
+                </div>
+
+                <div className={"div-user"}>
+                    <label htmlFor="surname">Surname</label>
+                    <input
+                        className={"w-64 border-emerald-500"}
+                        type="text" id={"surname"}
+                        name={"surname"}
+                        placeholder={"Doe"}
+                        value={formData.surname}
+                        required={true}
+                        onChange={handleChange}
+                    />
+                </div>
+
                 <div className={"div-user"}>
                     <label htmlFor="email">Email</label>
                     <input
@@ -79,8 +108,7 @@ export default function index() {
                     />
                 </div>
 
-                <button className={"bg-emerald-500 text-white border border-emerald-500"} type={"submit"}>Register
-                </button>
+                <button className={"bg-emerald-500 text-white border border-emerald-500"} type={"submit"}>Register</button>
 
                 {errorMessage && <p className={"text-red-600"}>{errorMessage}</p>}
                 {successMessage && <p className={"text-emerald-400"}>{successMessage}</p>}
