@@ -48,7 +48,7 @@ export default function Index() {
                     {accommodations.map((acc, index) => (
                         <li key={index} className="flex flex-col">
                             <button onClick={() => handleClick(acc._id)} className={`flex flex-col items-start border ${acc.bookedBy.length > 0 ? "border-red-500" : "border-emerald-500"} border-2 p-5`}>
-                                <img src={acc.images[0]} alt={acc.name} style={{ width: '100px', height: '100px' }} />
+                                <img src={acc.images} alt={acc.name} style={{ width: '100px', height: '100px' }} />
                                 <div className="accommodation-details">
                                     <h3>{acc.name}</h3>
                                     <p>{acc.location}</p>

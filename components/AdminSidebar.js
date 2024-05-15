@@ -13,6 +13,7 @@ export default function AdminSidebar() {
                       href={`/authorization/admin/${adminId}/`}>Users</Link>
                 <Link className="hover:underline hover:text-green-200"
                       href={`/authorization/admin/${adminId}/accommodations`}>Accommodations</Link>
+                <Link className="hover:underline hover:text-green-200" href={`/authorization/admin/${adminId}/addAccommodation`}>Add accommodation</Link>
             </div>
         </aside>
     )
