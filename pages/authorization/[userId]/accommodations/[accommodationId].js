@@ -1,7 +1,7 @@
 import {useRouter} from "next/router";
 import {useEffect, useState} from "react";
 
-async function fetchAccommodation(accommodationId){
+export async function fetchAccommodation(accommodationId){
     try {
         const response = await fetch(`http://localhost:3000/accommodation/${accommodationId}`, {
             method: "GET",
@@ -21,7 +21,7 @@ async function fetchAccommodation(accommodationId){
     }
 }
 
-async function fetchBooker(bookerId) {
+export async function fetchBooker(bookerId) {
     try {
         const response = await fetch(`http://localhost:3000/booker/${bookerId}`, {
             method: "GET",
@@ -41,7 +41,7 @@ async function fetchBooker(bookerId) {
     }
 }
 
-async function book(userId, accommodationId) {
+export async function book(userId, accommodationId) {
     try {
         const response = await fetch(`http://localhost:3000/accommodation/${userId}/${accommodationId}/book`, {
             method: "POST",
@@ -56,7 +56,7 @@ async function book(userId, accommodationId) {
         })
 
         if (response.ok) {
-            const data = await response.json();  // Assuming the server sends back a success message or booking details
+            const data = await response.json();
             console.log('Booking successful:', data);
             return data;
         } else {
@@ -114,7 +114,7 @@ export default function Accommodation() {
 
     return (
         <div className={"flex flex-col gap-3.5 m-10"}>
-            <img src={accommodation.images} alt={accommodation.name}/>
+            <img src={accommodation.images} style={{ width: '300px', height: '300px' }} alt={accommodation.name}/>
             <h1 className={"font-bold"}>Accommodation {accommodation.name}</h1>
             <p>Location: {accommodation.location}</p>
             <p>Type: {accommodation.type}</p>
@@ -130,5 +130,4 @@ export default function Accommodation() {
 
         </div>
     )
-
 }

@@ -26,7 +26,7 @@ export default function Index() {
                         User
                     </Link>
                     <hr className="w-full h-0.5 bg-emerald-50"/>
-                    <Link href="#" className="text-emerald-50 hover:text-green-200 transition-colors">
+                    <Link href="/authorization/login/admin" className="text-emerald-50 hover:text-green-200 transition-colors">
                         Admin
                     </Link>
                 </div>
