@@ -84,7 +84,7 @@ export default function Bookings() {
     }
 
     return (
-        <div className="m-10">
+        <div className="mb-3">
             <div className="inline-block">
                 <h1 className="font-bold text-4xl">Bookings:</h1>
             </div>
