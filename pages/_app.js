@@ -1,15 +1,40 @@
-// pages/index.js
-import '../styles/globals.css'; // Import global styles if necessary
-import Header from '../components/Header';
-import Sidebar from "../components/Sidebar"; // Import the Header component
+import '../styles/globals.css';
+import { useState, useEffect } from 'react';
+import UserLayout from "../components/UserLayout";
+import Header from "../components/Header";
+import Sidebar from "../components/Sidebar";
 
-function MyApp({ Component, pageProps }) {
+export default function MyApp({ Component, pageProps, router }) {
+    const userPath = router.pathname.startsWith("/authorization/[userId]");
+
+    const [layoutState, setLayoutState] = useState({
+        header: null,
+        sidebar: null
+    });
+
+    useEffect(() => {
+        if (userPath && (!layoutState.header || !layoutState.sidebar)) {
+            setLayoutState({
+                header: <Header />,
+                sidebar: <Sidebar />
+            });
+        }
+    }, [userPath]);
+
     return (
         <>
-            <Header />
-            <Component {...pageProps} />
+            {userPath ? (
+                <UserLayout header={layoutState.header} sidebar={layoutState.sidebar}>
+                    <Component {...pageProps} />
+                </UserLayout>
+            ) : (
+                <>
+                    <Header />
+                    <Component {...pageProps} />
+                </>
+            )}
         </>
     );
 }
 
-export default MyApp;
+
