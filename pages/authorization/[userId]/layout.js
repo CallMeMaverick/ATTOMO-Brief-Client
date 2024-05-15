@@ -1,6 +1,6 @@
 import { Ubuntu } from 'next/font/google';
 
-const ubuntu = Ubuntu({ weight: '400' });
+const ubuntu = Ubuntu({ weight: '400', subsets: ["greek"] });
 
 export default function UserLayout({ children }) {
     return (
