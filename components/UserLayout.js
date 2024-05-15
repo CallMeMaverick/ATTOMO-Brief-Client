@@ -1,12 +1,12 @@
-import Sidebar from "./Sidebar";
-
-export default function UserLayout({ children }) {
-    console.log("RENDERING!");
+export default function UserLayout({ children, header, sidebar }) {
     return (
-        <div className={"flex flex-row"}>
-            <Sidebar />
-            <div className={"m-5"}>
-                {children}
+        <div className="flex">
+            {sidebar}
+            <div className="flex flex-col flex-grow ml-64">
+                {header}
+                <div className="m-5">
+                    {children}
+                </div>
             </div>
         </div>
     )
