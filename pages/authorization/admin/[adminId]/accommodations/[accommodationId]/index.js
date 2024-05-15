@@ -1,8 +1,30 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { fetchAccommodation, fetchBooker} from "../../../../[userId]/accommodations/[accommodationId]";
-import {dismissBooking} from "../../user/[userId]";
+import  {dismissBooking, } from "../../user/[userId]";
 import Link from "next/link";
+
+async function deleteAccommodation(accommodationId) {
+    try {
+        const response = await fetch(`http://localhost:3000/accommodation/${accommodationId}`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${localStorage.getItem("token")}`
+            }
+        })
+        console.log(response);
+
+        if (response.ok) {
+            console.log("Accommodation successfully deleted");
+            return await response.json();
+        } else {
+            throw new Error("Could not delete accommodation");
+        }
+    } catch(error) {
+        throw error;
+    }
+}
 
 export default function Accommodation() {
     const [accommodation, setAccommodation] = useState(null);
@@ -21,6 +43,15 @@ export default function Accommodation() {
             setError(error.message);
         }
     }
+
+    const handleDeletion = async (accommodationId) => {
+        try {
+            await deleteAccommodation(accommodationId);
+            router.push(`/authorization/admin/${adminId}/accommodations`);
+        } catch (error) {
+            setError(error.message);
+        }
+    };
 
     useEffect(() => {
         if (accommodationId) {
@@ -57,18 +88,26 @@ export default function Accommodation() {
             <p><span className={"font-bold"}>Location</span>: {accommodation.location}</p>
             <p><span className={"font-bold"}>Type</span>: {accommodation.type}</p>
             <p><span className={"font-bold"}>Price per night</span>: {accommodation.pricePerNight}</p>
-            <div>
+            <div >
                 <h1><span className={"font-bold"}>Booked by: </span></h1>
                 {booker ? (
-                    <div>
-                        <Link className={"ml-5"} href={`/authorization/admin/${adminId}/user/${booker._id}`}>
-                            <span className={"hover:text-emerald-400 hover:underline"}>{booker.name} {booker.surname}</span>, id: ('<span className={"italic font-bold text-emerald-400"}>{booker._id}</span>')
-                        </Link>
-                        <button className={"bg-red-600 text-white p-1 rounded-xl ml-5"} onClick={() => handleDismissing(accommodationId)}>Dismiss this booking</button>
-                    </div>
+                    <>
+                        <div>
+                            <Link className={"ml-5"} href={`/authorization/admin/${adminId}/user/${booker._id}`}>
+                                <span
+                                    className={"hover:text-emerald-400 hover:underline"}>{booker.name} {booker.surname}</span>,
+                                id: ('<span className={"italic font-bold text-emerald-400"}>{booker._id}</span>')
+                            </Link>
+                            <button className={"bg-red-600 text-white p-1 rounded-xl ml-5"}
+                                    onClick={() => handleDismissing(accommodationId)}>Dismiss this booking
+                            </button>
+                        </div>
+                    </>
                 ) : (
                     "Not booked"
                 )}
+                <br />
+                <button className={"bg-red-600 text-white p-1 rounded-xl mt-5"} onClick={() => handleDeletion(accommodationId)}>Delete accommodation</button>
             </div>
         </div>
     );

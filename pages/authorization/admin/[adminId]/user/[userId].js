@@ -159,7 +159,7 @@ export default function UserId() {
                         <li key={index} className={"m-3"}>
                             <div className={"flex flex-row gap-3.5"}>
                                 <Link className={"hover:text-emerald-400 hover:underline mr-2"}
-                                      href={`authorization/admin/accommodation/${booking.id}`}>{booking.name}</Link>
+                                      href={`/authorization/admin/${adminId}/accommodations/${booking._id}`}>{booking.name}</Link>
                                 <div className={"ml-2"}>
                                     <button onClick={() => handleDismissing(booking._id)} className={"bg-red-600 text-white rounded-lg p-0.5"}>Dismiss this bookings
                                     </button>
