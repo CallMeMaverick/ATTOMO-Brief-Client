@@ -1,7 +1,7 @@
 import {useRouter} from "next/router";
 import {useEffect, useState} from "react";
 
-async function fetchAccommodation(accommodationId){
+export async function fetchAccommodation(accommodationId){
     try {
         const response = await fetch(`http://localhost:3000/accommodation/${accommodationId}`, {
             method: "GET",
@@ -21,7 +21,7 @@ async function fetchAccommodation(accommodationId){
     }
 }
 
-async function fetchBooker(bookerId) {
+export async function fetchBooker(bookerId) {
     try {
         const response = await fetch(`http://localhost:3000/booker/${bookerId}`, {
             method: "GET",
@@ -41,7 +41,7 @@ async function fetchBooker(bookerId) {
     }
 }
 
-async function book(userId, accommodationId) {
+export async function book(userId, accommodationId) {
     try {
         const response = await fetch(`http://localhost:3000/accommodation/${userId}/${accommodationId}/book`, {
             method: "POST",
@@ -130,5 +130,4 @@ export default function Accommodation() {
 
         </div>
     )
-
 }

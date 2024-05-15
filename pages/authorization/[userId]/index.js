@@ -1,7 +1,7 @@
 import {useEffect, useState} from "react";
 import { useRouter } from "next/router";
 
-async function fetchAccommodations() {
+export async function fetchAccommodations() {
     try {
         const response = await fetch("http://localhost:3000/accommodations", {
             method: "GET",
