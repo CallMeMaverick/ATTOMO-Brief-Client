@@ -49,7 +49,7 @@ async function fetchBookedAccommodations(fetchBookedAccommodationsIds) {
     return accommodationsBooked;
 }
 
-async function dismissBooking(accommodationId) {
+export async function dismissBooking(accommodationId) {
     console.log('id ', accommodationId);
     try {
         const response = await fetch(`http://localhost:3000/accommodation/${accommodationId}/dismissBooking`, {

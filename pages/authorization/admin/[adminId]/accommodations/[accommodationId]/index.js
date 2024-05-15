@@ -1,14 +1,26 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { fetchAccommodation, fetchBooker} from "../../../../[userId]/accommodations/[accommodationId]";
+import {dismissBooking} from "../../user/[userId]";
 import Link from "next/link";
 
 export default function Accommodation() {
     const [accommodation, setAccommodation] = useState(null);
+    const [bookings, setBookings] = useState([]);
     const [booker, setBooker] = useState(null);
     const [error, setError] = useState('');
     const router = useRouter();
     const { adminId, userId, accommodationId } = router.query;
+
+    const handleDismissing = async (accommodationId) => {
+        try {
+            await dismissBooking(accommodationId);
+            setBookings(prevBookings => prevBookings.filter(booking => booking.id !== accommodationId));
+            router.reload(window.location.pathname);
+        } catch (error) {
+            setError(error.message);
+        }
+    }
 
     useEffect(() => {
         if (accommodationId) {
@@ -48,9 +60,12 @@ export default function Accommodation() {
             <div>
                 <h1><span className={"font-bold"}>Booked by: </span></h1>
                 {booker ? (
-                    <Link className={"ml-5"} href={`/authorization/admin/${adminId}/user/${booker._id}`}>
-                        <span className={"hover:text-emerald-400 hover:underline"}>{booker.name} {booker.surname}</span>, id: ('<span className={"italic font-bold text-emerald-400"}>{booker._id}</span>')
-                    </Link>
+                    <div>
+                        <Link className={"ml-5"} href={`/authorization/admin/${adminId}/user/${booker._id}`}>
+                            <span className={"hover:text-emerald-400 hover:underline"}>{booker.name} {booker.surname}</span>, id: ('<span className={"italic font-bold text-emerald-400"}>{booker._id}</span>')
+                        </Link>
+                        <button className={"bg-red-600 text-white p-1 rounded-xl ml-5"} onClick={() => handleDismissing(accommodationId)}>Dismiss this booking</button>
+                    </div>
                 ) : (
                     "Not booked"
                 )}
