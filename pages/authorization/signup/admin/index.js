@@ -35,6 +35,7 @@ export default function index() {
         if (response.ok) {
             const data = await response.json();
             setSuccessMessage("Admin successfully created");
+            router.redirect("/authorization/")
         } else {
             let errorData;
             try {
