@@ -52,7 +52,11 @@ export default function Index() {
                                 <h3><span className={"font-bold"}>Name:</span> {user.name}</h3>
                                 <p><span className={"font-bold"}>Surname:</span> {user.surname}</p>
                                 <p><span className={"font-bold"}>Email:</span> {user.email}</p>
-                                <p><span className={"font-bold"}>Role:</span> {user.role}</p>
+                                <p><span className={"font-bold"}>Role:</span> {user.role === "admin" ?
+                                    <span className={"text-cyan-500 italic font-bold"}>admin</span>
+                                    :
+                                    <span className={"text-emerald-700"}>user</span>
+                                }</p>
                             </div>
                         </button>
                     </li>

@@ -152,9 +152,9 @@ export default function UserId() {
             <h1><span className={"font-bold"}>Surname: </span> {user.surname}</h1>
             <h1><span className={"font-bold"}>Email: </span> {user.email}</h1>
             <div className={"mt-5"}>
-                <h1><span className={"font-bold"}>Bookings:</span></h1>
-                {bookings.length === 0 && "None"}
-                {bookings.length > 0 && <ol className={"list-decimal ml-10"}>
+                {user.role !== "admin" && <h1><span className={"font-bold"}>Bookings:</span></h1>}
+                {user.role !== "admin" && bookings.length === 0 && "None"}
+                {user.role !== "admin" && bookings.length > 0 && <ol className={"list-decimal ml-10"}>
                     {bookings.map((booking, index) => (
                         <li key={index} className={"m-3"}>
                             <div className={"flex flex-row gap-3.5"}>
