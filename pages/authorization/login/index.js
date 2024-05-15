@@ -1,4 +1,5 @@
 import {useState} from "react";
+import {useRouter} from "next/router";
 
 export default function index() {
     const [formData, setFormData] = useState({
@@ -8,6 +9,7 @@ export default function index() {
 
     const [errorMessage, setErrorMessage] = useState('');
     const [successMessage, setSuccessMessage] = useState('');
+    const router = useRouter();
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -32,7 +34,10 @@ export default function index() {
 
         if (response.ok) {
             const data = await response.json();
+            localStorage.setItem("token", data.token);
             setSuccessMessage("Successfully logged in");
+            router.push(`/authorization/${data.user.id}/`)
+
         } else {
             let errorMessage;
             try {

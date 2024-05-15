@@ -1,13 +1,11 @@
-"use client"
-
 import {useState} from "react";
 
-export default function index() {
+export default function signupAdmin() {
     const [formData, setFormData] = useState({
-        name: '',
-        surname: '',
-        email: '',
-        password: ''
+        name: "",
+        surname: "",
+        email: "",
+        password: ""
     })
 
     const [errorMessage, setErrorMessage] = useState('');
@@ -18,25 +16,25 @@ export default function index() {
         setFormData({
             ...formData,
             [name]: value
-        });
-    };
+        })
+    }
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         setErrorMessage('');
         setSuccessMessage('');
 
-        const response = await fetch("http://localhost:3000/signup", {
+        const response = await fetch("http://localhost:3000/signup/admin", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify(formData)
-        })
+        });
 
         if (response.ok) {
             const data = await response.json();
-            setSuccessMessage("User created successfully");
+            setSuccessMessage("Admin successfully created");
         } else {
             let errorData;
             try {
@@ -47,6 +45,7 @@ export default function index() {
             setErrorMessage(errorData.message || 'Failed to create user.');
             console.error('Failed to create user:', errorData);
         }
+
     }
 
     return (
@@ -106,7 +105,8 @@ export default function index() {
                     />
                 </div>
 
-                <button className={"bg-emerald-500 text-white border border-emerald-500"} type={"submit"}>Register</button>
+                <button className={"bg-emerald-500 text-white border border-emerald-500"} type={"submit"}>Register
+                </button>
 
                 {errorMessage && <p className={"text-red-600"}>{errorMessage}</p>}
                 {successMessage && <p className={"text-emerald-400"}>{successMessage}</p>}

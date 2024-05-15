@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-export default function CustomComponent() {
+export default function Index() {
     return (
         <div className="flex flex-row items-center justify-center mt-20 space-x-4 w-full px-4">
             <div className="relative bg-emerald-400 text-emerald-50 p-4 pt-12 w-full max-w-xs rounded-lg">
