@@ -28,7 +28,7 @@ export default function Index() {
     const { adminId } = router.query;
 
     const handleClick = (userId) => {
-        router.push(`/authorization/${adminId}/users${userId}`)
+        router.push(`/authorization/admin/${adminId}/user/${userId}`)
     }
 
     useEffect(() => {
