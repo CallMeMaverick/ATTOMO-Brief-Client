@@ -53,6 +53,10 @@ export default function Accommodation() {
         }
     };
 
+    const handleEdit = (accommodationId) => {
+        router.push(`/authorization/admin/${adminId}/accommodations/update/${accommodationId}`);
+    };
+
     useEffect(() => {
         if (accommodationId) {
             fetchAccommodation(accommodationId)
@@ -107,7 +111,11 @@ export default function Accommodation() {
                     "Not booked"
                 )}
                 <br />
-                <button className={"bg-red-600 text-white p-1 rounded-xl mt-5"} onClick={() => handleDeletion(accommodationId)}>Delete accommodation</button>
+                <div className={"flex flex-row gap-3.5"}>
+                    <button className={"bg-red-600 text-white p-1 rounded-xl mt-5"} onClick={() => handleDeletion(accommodationId)}>Delete accommodation</button>
+                    <button className={"bg-emerald-600 text-white p-1 rounded-xl mt-5"} onClick={() => handleEdit(accommodationId)}>Update</button>
+                </div>
+
             </div>
         </div>
     );
