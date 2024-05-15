@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu+Sans:ital,wght@0,100..800;1,100..800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+}
+
+
+@layer signup {
+    .div-user {
+        @apply flex flex-col justify-center
+    }
+}
+
+
+input {
+    border: 2px solid black;
+    padding: 3px;
+    width: 200px;
+}
+
+
+@layer utilities {
+    .text-balance {
+        text-wrap: balance;
+    }
+}
