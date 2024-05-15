@@ -1,36 +1,83 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# ATTOMO Brief API
 
-## Getting Started
+[**API repo**](https://github.com/CallMeMaverick/ATTOMO-Brief-API)
 
-First, run the development server:
+This project is a part of the ATTOMO Digital test and is designed to showcase full-stack development skills by building a real-world accommodation booking platform. The platform provides functionalities for administrators, and registered users, enabling them to manage and book accommodations seamlessly.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🔎 Project Overview
 
-You can start editing the page by modifying `app/Header.js`. The page auto-updates as you edit the file.
+The platform is built using the MERN stack, which includes MongoDB, Express, React, and Node.js, along with integration of Next.js for server-side rendering and enhanced performance. Styling is implemented using Tailwind CSS. Below is a brief overview of the key features and technologies used in this project:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-## Learn More
+### 💡 Key Features
 
-To learn more about Next.js, take a look at the following resources:
+- **Roles and Authentication:**
+  - Admin: Manages accommodations and user bookings, can add, edit, delete accommodations, and manage user profiles.
+  - User (Registered): Can register, login, book accommodations, manage their profile, and view booking details.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Accommodation Management:**
+  - Admins can add, edit, and delete accommodations.
+  - Users can book accommodations, and view availability.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### ⚙️ Technologies Used
 
-## Deploy on Vercel
+- [**Backend**](https://github.com/CallMeMaverick/ATTOMO-Brief-API):
+  - **Node.js** and **Express**: For building the RESTful API.
+  - **MongoDB**: For database management to store user, accommodation, and booking data.
+- **Frontend:**
+  - **React**: For building the dynamic and interactive user interface.
+  - **Next.js**: For server-side rendering and improving performance and SEO.
+  - **Tailwind CSS**: For styling and ensuring a responsive design.
+- **Authentication:**
+  - [**JWT**](https://jwt.io/) Email and password-based authentication for user registration and login.
+- **Deployment:**
+  - Backend part is deployed on [fly.io](https://fly.io/).
+  - Frontend part is deployed on [Vercel](https://github.com/vercel).
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🛫 Getting Started
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+To get started with the project, clone the repository and follow the installation instructions provided in the subsequent sections. This README will guide you through the setup and usage of the platform.
+
+## 👨🏻‍🎓 Installation
+
+To set up the project locally, follow these steps:
+
+### Prerequisites
+
+- Node.js (v14.x or later)
+- Git
+
+### Frontend Setup
+
+1. **Clone the Repository:**
+   ```bash
+   git clone https://github.com/CallMeMaverick/ATTOMO-Brief-Client.git
+   cd ATTOMO-Brief-Client
+   ```
+
+2. **Install Frontend Dependencies:**
+   ```bash
+   npm install
+   ```
+3. Start the Server:
+   ```bash
+   npm run dev
+   ```
+
+## 🤝 Contributing
+If you'd like to contribute to this project, please open an issue first. This allows for discussion and planning before any code is written. Once the issue is discussed and approved, you can proceed with the following steps:
+
+1. **Fork the Repository:**
+   Fork this repository to your own GitHub account and clone it to your local machine.
+
+2. **Create a Feature Branch:**
+   Create a new branch from `main` for your feature or bug fix.
+   ```bash
+   git checkout -b feature/name
+   ```
+
+3. **Start cooking!**
+
+## 📄 License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details. 
