@@ -13,6 +13,8 @@ export default function Sidebar() {
                       href={`/authorization/${userId}/`}>Accommodations</Link>
                 <Link className="hover:underline hover:text-green-200"
                       href={`/authorization/${userId}/bookings`}>Bookings</Link>
+                <Link className="hover:underline hover:text-green-200 italic font-bold"
+                      href={`/authorization/${userId}/profile`}>[ Profile ]</Link>
             </div>
         </aside>
     )
