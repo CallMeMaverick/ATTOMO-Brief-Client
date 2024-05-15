@@ -14,6 +14,7 @@ export default function AdminSidebar() {
                 <Link className="hover:underline hover:text-green-200"
                       href={`/authorization/admin/${adminId}/accommodations`}>Accommodations</Link>
                 <Link className="hover:underline hover:text-green-200" href={`/authorization/admin/${adminId}/addAccommodation`}>Add accommodation</Link>
+                <Link className="hover:underline hover:text-green-200 font-bold italic" href={`/authorization/admin/${adminId}/profile`}>[ Profile ]</Link>
             </div>
         </aside>
     )
