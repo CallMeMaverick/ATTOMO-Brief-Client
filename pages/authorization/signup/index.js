@@ -1,8 +1,10 @@
 "use client"
 
 import {useState} from "react";
+import {useRouter} from "next/router";
 
 export default function index() {
+    const router = useRouter();
     const [formData, setFormData] = useState({
         name: '',
         surname: '',
@@ -37,6 +39,7 @@ export default function index() {
         if (response.ok) {
             const data = await response.json();
             setSuccessMessage("User created successfully");
+            router.push("/authorization/")
         } else {
             let errorData;
             try {
