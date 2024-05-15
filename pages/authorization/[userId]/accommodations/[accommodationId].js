@@ -114,7 +114,7 @@ export default function Accommodation() {
 
     return (
         <div className={"flex flex-col gap-3.5 m-10"}>
-            <img src={accommodation.images} alt={accommodation.name}/>
+            <img src={accommodation.images} style={{ width: '300px', height: '300px' }} alt={accommodation.name}/>
             <h1 className={"font-bold"}>Accommodation {accommodation.name}</h1>
             <p>Location: {accommodation.location}</p>
             <p>Type: {accommodation.type}</p>
