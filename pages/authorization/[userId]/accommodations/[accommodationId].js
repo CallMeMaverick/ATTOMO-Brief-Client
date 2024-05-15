@@ -56,7 +56,7 @@ async function book(userId, accommodationId) {
         })
 
         if (response.ok) {
-            const data = await response.json();  // Assuming the server sends back a success message or booking details
+            const data = await response.json();
             console.log('Booking successful:', data);
             return data;
         } else {
