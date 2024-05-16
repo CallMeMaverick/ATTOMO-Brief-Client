@@ -1,4 +1,4 @@
-# ATTOMO Brief API
+# ATTOMO Brief Client
 
 [**API repo**](https://github.com/CallMeMaverick/ATTOMO-Brief-API)
 
