@@ -1,6 +1,8 @@
 import {useState} from "react";
+import {useRouter} from "next/router";
 
 export default function index() {
+    const router = useRouter();
     const [formData, setFormData] = useState({
         name: "",
         surname: "",
@@ -35,7 +37,7 @@ export default function index() {
         if (response.ok) {
             const data = await response.json();
             setSuccessMessage("Admin successfully created");
-            router.redirect("/authorization/")
+            router.push("/authorization/")
         } else {
             let errorData;
             try {
