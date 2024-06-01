@@ -79,7 +79,7 @@ export default function index() {
                     />
                 </div>
 
-                <button className={"bg-emerald-500 text-white border border-emerald-500"} type={"submit"}>Register
+                <button className={"bg-emerald-500 text-white border border-emerald-500"} type={"submit"}>Log in
                 </button>
 
                 {errorMessage && <p className={"text-red-600"}>{errorMessage}</p>}
